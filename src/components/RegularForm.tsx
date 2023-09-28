@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
 
 
 interface FormData {
@@ -45,7 +46,11 @@ function RegularForm() {
                         border: errors.username ? "1px solid red" : "1px solid #ccc"
                     }}
                 />
-                {errors.username && <p>{String(errors.username.message)}</p>}
+                <ErrorMessage
+                    errors={errors}
+                    name="username"
+                    render={({ message }) => <p>{message}</p>}
+                />
             </div>
             <div>
                 <input
@@ -66,7 +71,11 @@ function RegularForm() {
                         border: errors.username ? "1px solid red" : "1px solid #ccc"
                     }}
                 />
-                {errors.email && <p>{String(errors.email.message)}</p>}
+                <ErrorMessage
+                    errors={errors}
+                    name="email"
+                    render={({ message }) => <p>{message}</p>}
+                />
             </div>
             <div>
                 <input
@@ -105,7 +114,11 @@ function RegularForm() {
                         border: errors.username ? "1px solid red" : "1px solid #ccc"
                     }}
                 />
-                {errors.password && <p>{String(errors.password.message)}</p>}
+                <ErrorMessage
+                    errors={errors}
+                    name="password"
+                    render={({ message }) => <p>{message}</p>}
+                />
             </div>
             <button type="submit">Submit</button>
         </form>
