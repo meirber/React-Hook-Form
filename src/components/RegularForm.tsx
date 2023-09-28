@@ -74,10 +74,20 @@ function RegularForm() {
                             value: 20,
                             message: "Password must not exceed 20 characters",
                         },
-                        pattern: {
-                            value: /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=]).*$/,
-                            message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (@#$%^&+=)",
-                        }
+                        validate: {
+                            hasUppercase: (value) =>
+                              /[A-Z]/.test(value) ||
+                              "Password must contain at least one uppercase letter",
+                            hasLowercase: (value) =>
+                              /[a-z]/.test(value) ||
+                              "Password must contain at least one lowercase letter",
+                            hasNumber: (value) =>
+                              /\d/.test(value) ||
+                              "Password must contain at least one number",
+                            hasSpecialCharacter: (value) =>
+                              /[@#$%^&+=]/.test(value) ||
+                              "Password must contain at least one special character (@#$%^&+=)",
+                          }
                     })}
                     type="text"
                     id="password"
