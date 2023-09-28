@@ -1,4 +1,4 @@
-import { useState, ChangeEvent} from 'react';
+import { useState, ChangeEvent } from 'react';
 import { useForm } from "react-hook-form";
 
 
@@ -41,6 +41,9 @@ function RegularForm() {
                     placeholder='Enter UserName'
                     value={formData.username}
                     onChange={handleChange}
+                    style={{
+                        border: errors.username ? "1px solid red" : "1px solid #ccc"
+                    }}
                 />
                 {errors.username && <p>{String(errors.username.message)}</p>}
             </div>
@@ -59,6 +62,9 @@ function RegularForm() {
                     placeholder='Enter Email'
                     value={formData.email}
                     onChange={handleChange}
+                    style={{
+                        border: errors.username ? "1px solid red" : "1px solid #ccc"
+                    }}
                 />
                 {errors.email && <p>{String(errors.email.message)}</p>}
             </div>
@@ -76,18 +82,18 @@ function RegularForm() {
                         },
                         validate: {
                             hasUppercase: (value) =>
-                              /[A-Z]/.test(value) ||
-                              "Password must contain at least one uppercase letter",
+                                /[A-Z]/.test(value) ||
+                                "Password must contain at least one uppercase letter",
                             hasLowercase: (value) =>
-                              /[a-z]/.test(value) ||
-                              "Password must contain at least one lowercase letter",
+                                /[a-z]/.test(value) ||
+                                "Password must contain at least one lowercase letter",
                             hasNumber: (value) =>
-                              /\d/.test(value) ||
-                              "Password must contain at least one number",
+                                /\d/.test(value) ||
+                                "Password must contain at least one number",
                             hasSpecialCharacter: (value) =>
-                              /[@#$%^&+=]/.test(value) ||
-                              "Password must contain at least one special character (@#$%^&+=)",
-                          }
+                                /[@#$%^&+=]/.test(value) ||
+                                "Password must contain at least one special character (@#$%^&+=)",
+                        }
                     })}
                     type="text"
                     id="password"
@@ -95,6 +101,9 @@ function RegularForm() {
                     placeholder='Enter Password'
                     value={formData.password}
                     onChange={handleChange}
+                    style={{
+                        border: errors.username ? "1px solid red" : "1px solid #ccc"
+                    }}
                 />
                 {errors.password && <p>{String(errors.password.message)}</p>}
             </div>
